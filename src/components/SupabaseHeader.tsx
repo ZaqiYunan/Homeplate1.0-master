@@ -25,8 +25,11 @@ export function SupabaseHeader() {
   const { userProfile } = useAppContext();
   const { toast } = useToast();
 
+  // Check if we're on the landing page
+  const isLandingPage = pathname === '/';
+
   const navItems = [
-    { href: '/dashboard', label: 'Home', icon: <LayoutDashboard size={18} />, protected: true },
+    { href: '/dashboard', label: 'Dashboard', icon: <LayoutDashboard size={18} />, protected: true },
     { href: '/recipes', label: 'Recipes Finder', icon: <ChefHat size={18} />, protected: true },
     { href: '/storage', label: 'Storage', icon: <Warehouse size={18} />, protected: true },
     { href: '/nutrition', label: 'Nutrition', icon: <HeartPulse size={18} />, protected: true },
@@ -56,7 +59,7 @@ export function SupabaseHeader() {
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              (!item.protected || user) && (
+              (isLandingPage || !item.protected || user) && (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -126,10 +129,10 @@ export function SupabaseHeader() {
         </div>
 
         {/* Mobile Navigation */}
-        {user && (
+        {(isLandingPage || user) && (
           <div className="md:hidden mt-4 flex items-center justify-center space-x-4">
             {navItems.map((item) => (
-              (!item.protected || user) && (
+              (isLandingPage || !item.protected || user) && (
                 <Link
                   key={item.href}
                   href={item.href}

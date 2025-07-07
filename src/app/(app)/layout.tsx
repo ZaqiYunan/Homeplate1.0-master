@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { AppProvider } from '@/contexts/SupabaseAppContext';
-import { Header } from '@/components/Header';
+import { SupabaseHeader } from '@/components/SupabaseHeader';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { Toaster } from "@/components/ui/toaster";
 
@@ -12,7 +12,7 @@ export default function SupabaseAppLayout({
   return (
     <AppProvider>
       <div className="min-h-screen flex flex-col bg-background">
-        <Header />
+        <SupabaseHeader />
         <main className="flex-grow container mx-auto px-4 py-8">
           <ProtectedRoute>
             {children}

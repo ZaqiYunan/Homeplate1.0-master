@@ -71,7 +71,7 @@ export function Header() {
           })}
           
           {/* Admin link - only show for admin users */}
-          {user && userProfile.role === 'admin' && (
+          {user && userProfile?.role === 'admin' && (
             <Link
               href="/admin"
               className={cn(
