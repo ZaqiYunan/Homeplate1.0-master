@@ -3,9 +3,9 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "regions": ["sin1"],
+  "regions": ["iad1"],
   "functions": {
-    "src/app/api/**": {
+    "app/api/**": {
       "maxDuration": 30
     }
   },
@@ -26,12 +26,6 @@
           "value": "Content-Type, Authorization"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
     }
   ]
 }
