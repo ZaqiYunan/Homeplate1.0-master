@@ -11,8 +11,9 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ['@genkit-ai/core', '@genkit-ai/ai', 'genkit'],
+    esmExternals: 'loose',
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
     // Handle Genkit AI dependencies
     if (!isServer) {
       config.resolve.fallback = {
@@ -21,6 +22,9 @@ const nextConfig: NextConfig = {
         os: false,
         path: false,
         child_process: false,
+        crypto: false,
+        stream: false,
+        buffer: false,
       };
     }
     
@@ -28,7 +32,34 @@ const nextConfig: NextConfig = {
     config.ignoreWarnings = [
       { module: /node_modules\/@opentelemetry/ },
       { module: /node_modules\/handlebars/ },
+      /Critical dependency: the request of a dependency is an expression/,
     ];
+    
+    // Fix for client reference manifest issue
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
+    
+    // Handle dynamic imports better
+    if (!dev) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          ...config.optimization.splitChunks,
+          cacheGroups: {
+            ...config.optimization.splitChunks?.cacheGroups,
+            default: false,
+            vendors: false,
+            framework: {
+              chunks: 'all',
+              name: 'framework',
+              test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
+              priority: 40,
+              enforce: true,
+            },
+          },
+        },
+      };
+    }
     
     return config;
   },
