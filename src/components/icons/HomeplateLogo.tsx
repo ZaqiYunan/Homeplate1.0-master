@@ -5,6 +5,8 @@ export function HomeplateLogo(props: ImgHTMLAttributes<HTMLImageElement>) {
     <img
       src="https://fxeogbzwstepyyjgvkrq.supabase.co/storage/v1/object/public/assets/homeplate-logo.png"
       alt="Homeplate Logo"
+      width={80}
+      height={80}
       {...props}
       data-ai-hint="logo plate"
     />
