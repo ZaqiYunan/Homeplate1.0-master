@@ -19,13 +19,13 @@
 **In Vercel Dashboard → Settings → Environment Variables:**
 
 ```bash
-# Copy these EXACT values:
-NEXT_PUBLIC_SUPABASE_URL=https://fxeogbzwstepyyjgvkrq.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4ZW9nYnp3c3RlcHl5amd2a3JxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3NTg4NjEsImV4cCI6MjA2NzMzNDg2MX0.PoHq60wxyfqTw8_WsFhFZBqnq6z_34tET6q8JllMLWE
-NEXT_PUBLIC_GOOGLE_CLIENT_ID=978728010500-np6rjedukgboso3u3a48rkd5evsa563k.apps.googleusercontent.com
-NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=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
-GOOGLE_API_KEY=AIzaSyBsbgI0yEK7NoMrx1-uQSzGe2zp_AmJo4g
-GEMINI_API_KEY=AIzaSyBsbgI0yEK7NoMrx1-uQSzGe2zp_AmJo4g
+# Replace with your actual values:
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_oauth_client_id
+NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
+GOOGLE_API_KEY=your_google_ai_api_key
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
 ### 3. Redeploy
