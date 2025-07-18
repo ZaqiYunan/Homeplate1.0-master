@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 150 60% 97%; /* Very Pale Green */
+    --foreground: 160 8% 25%; /* Dark Gray-Green */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 160 8% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 8% 25%;
+
+    --primary: 158 41% 40%; /* Darker Green for buttons/actions */
+    --primary-foreground: 0 0% 100%; /* White */
+
+    --secondary: 155 35% 92%; /* Lighter Green for secondary backgrounds */
+    --secondary-foreground: 155 30% 30%; /* Darker Green text on secondary */
+
+    --muted: 150 30% 95%; /* Muted background */
+    --muted-foreground: 150 10% 60%; /* Muted text */
+
+    --accent: 156 44% 55%; /* Main Light Green for text/headings */
+    --accent-foreground: 160 8% 25%; /* Dark text for light green accent */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 150 25% 90%; /* Light green-gray border */
+    --input: 150 25% 90%;
+    --ring: 156 44% 55%; /* Light green for focus rings */
+
+    --radius: 0.5rem;
+
+    --chart-1: 156 70% 55%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 170 50% 35%;
+    --chart-4: 150 80% 65%;
+    --chart-5: 165 75% 60%;
+
+    /* Sidebar specific colors - can be adjusted if sidebar is heavily themed */
+    --sidebar-background: 150 30% 95%;
+    --sidebar-foreground: 160 8% 25%;
+    --sidebar-primary: 158 41% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 156 44% 55%;
+    --sidebar-accent-foreground: 160 8% 25%;
+    --sidebar-border: 150 25% 90%;
+    --sidebar-ring: 156 44% 55%;
+  }
+
+  .dark {
+    /* Create a corresponding dark theme */
+    --background: 160 10% 10%; /* Dark Greenish Black */
+    --foreground: 150 30% 92%; /* Light Greenish Gray */
+
+    --card: 160 10% 14%; 
+    --card-foreground: 150 30% 92%;
+
+    --popover: 160 10% 14%;
+    --popover-foreground: 150 30% 92%;
+
+    --primary: 158 41% 50%; /* Brighter dark green for buttons */
+    --primary-foreground: 160 10% 10%; /* Dark text */
+
+    --secondary: 160 10% 20%; 
+    --secondary-foreground: 150 30% 85%;
+
+    --muted: 160 5% 18%;
+    --muted-foreground: 150 15% 65%;
+
+    --accent: 156 44% 60%; /* Brighter light green for text/headings */
+    --accent-foreground: 150 30% 92%; /* Light text */
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 160 10% 25%;
+    --input: 160 10% 25%;
+    --ring: 156 44% 60%;
+
+    /* Sidebar specific colors - dark mode */
+    --sidebar-background: 160 10% 12%;
+    --sidebar-foreground: 150 30% 90%;
+    --sidebar-primary: 158 41% 50%;
+    --sidebar-primary-foreground: 160 10% 10%;
+    --sidebar-accent: 156 44% 60%;
+    --sidebar-accent-foreground: 150 30% 92%;
+    --sidebar-border: 160 10% 25%;
+    --sidebar-ring: 156 44% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
