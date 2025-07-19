@@ -94,24 +94,6 @@ NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
 GOOGLE_API_KEY=your_google_ai_api_key
 GEMINI_API_KEY=your_gemini_api_key
 ```
-
-**Optional Variables (for enhanced features):**
-```bash
-# Email Notifications (if you set up Resend)
-RESEND_API_KEY=your-resend-api-key-here
-
-# Analytics (optional)
-NEXT_PUBLIC_VERCEL_ANALYTICS_ID=your-analytics-id
-
-# Firebase (if using Firebase features)
-NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=homeplate-r14jn.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=homeplate-r14jn
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=homeplate-r14jn.firebasestorage.app
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=821509879437
-NEXT_PUBLIC_FIREBASE_APP_ID=1:821509879437:web:c8ff8a35b84d53ca5e54c4
-```
-
 ### 3.2 Environment Setup Tips
 - **Environments:** Add to Production, Preview, and Development
 - **Security:** Never expose service role keys in NEXT_PUBLIC_ variables
