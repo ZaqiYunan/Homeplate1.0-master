@@ -82,7 +82,7 @@ export function RecipeDisplay({ recipe }: RecipeDisplayProps) {
           </button>
         )}
       </CardHeader>
-      <ScrollArea className="flex-grow">
+      <ScrollArea className="flex-grow max-h-[60vh] overflow-y-auto">
         <CardContent className="pt-6 space-y-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">

@@ -10,40 +10,29 @@ body {
   :root {
     --background: 150 60% 97%; /* Very Pale Green */
     --foreground: 160 8% 25%; /* Dark Gray-Green */
-
     --card: 0 0% 100%; /* White */
     --card-foreground: 160 8% 25%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 160 8% 25%;
-
     --primary: 158 41% 40%; /* Darker Green for buttons/actions */
     --primary-foreground: 0 0% 100%; /* White */
-
     --secondary: 155 35% 92%; /* Lighter Green for secondary backgrounds */
     --secondary-foreground: 155 30% 30%; /* Darker Green text on secondary */
-
     --muted: 150 30% 95%; /* Muted background */
     --muted-foreground: 150 10% 60%; /* Muted text */
-
     --accent: 156 44% 55%; /* Main Light Green for text/headings */
     --accent-foreground: 160 8% 25%; /* Dark text for light green accent */
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 150 25% 90%; /* Light green-gray border */
     --input: 150 25% 90%;
     --ring: 156 44% 55%; /* Light green for focus rings */
-
     --radius: 0.5rem;
-
     --chart-1: 156 70% 55%;
     --chart-2: 160 60% 45%;
     --chart-3: 170 50% 35%;
     --chart-4: 150 80% 65%;
     --chart-5: 165 75% 60%;
-
     /* Sidebar specific colors - can be adjusted if sidebar is heavily themed */
     --sidebar-background: 150 30% 95%;
     --sidebar-foreground: 160 8% 25%;
@@ -59,32 +48,23 @@ body {
     /* Create a corresponding dark theme */
     --background: 160 10% 10%; /* Dark Greenish Black */
     --foreground: 150 30% 92%; /* Light Greenish Gray */
-
-    --card: 160 10% 14%; 
+    --card: 160 10% 14%;
     --card-foreground: 150 30% 92%;
-
     --popover: 160 10% 14%;
     --popover-foreground: 150 30% 92%;
-
     --primary: 158 41% 50%; /* Brighter dark green for buttons */
     --primary-foreground: 160 10% 10%; /* Dark text */
-
-    --secondary: 160 10% 20%; 
+    --secondary: 160 10% 20%;
     --secondary-foreground: 150 30% 85%;
-
     --muted: 160 5% 18%;
     --muted-foreground: 150 15% 65%;
-
     --accent: 156 44% 60%; /* Brighter light green for text/headings */
     --accent-foreground: 150 30% 92%; /* Light text */
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 160 10% 25%;
     --input: 160 10% 25%;
     --ring: 156 44% 60%;
-
     /* Sidebar specific colors - dark mode */
     --sidebar-background: 160 10% 12%;
     --sidebar-foreground: 150 30% 90%;
@@ -104,4 +84,217 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom animations - Enhanced for your green theme */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced hover effects with your green theme */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px hsl(var(--accent) / 0.15);
+}
+
+/* Loading animation */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: "";
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%,
+  20% {
+    content: "";
+  }
+  40% {
+    content: ".";
+  }
+  60% {
+    content: "..";
+  }
+  80%,
+  100% {
+    content: "...";
+  }
+}
+
+/* Enhanced focus states using your green theme */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Text gradient animation with your green colors */
+.text-gradient-animate {
+  background: linear-gradient(-45deg, hsl(var(--accent)), hsl(var(--primary)), hsl(158 50% 45%), hsl(156 60% 50%));
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Green-themed glow effects */
+.glow-green {
+  box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-green:hover {
+  box-shadow: 0 0 30px hsl(var(--accent) / 0.5);
+}
+
+/* Card hover effects with green theme */
+.card-hover {
+  transition: all 0.3s ease;
+  border: 1px solid hsl(var(--border));
+}
+
+.card-hover:hover {
+  border-color: hsl(var(--accent) / 0.5);
+  background-color: hsl(var(--accent) / 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px hsl(var(--accent) / 0.1);
+}
+
+/* Button animations with your green palette */
+.btn-primary-animated {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(158 45% 45%));
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-animated::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary-animated:hover::before {
+  left: 100%;
+}
+
+.btn-primary-animated:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px hsl(var(--primary) / 0.3);
+}
+
+/* Responsive animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar with green theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent));
 }

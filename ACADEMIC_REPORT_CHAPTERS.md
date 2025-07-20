@@ -786,7 +786,7 @@ HomePlate mengintegrasikan Google Gemini LLM melalui Firebase Genkit untuk membe
 - **Platform:** Supabase (Backend-as-a-Service)
 - **Database:** PostgreSQL with Row Level Security (RLS)
 - **Authentication:** Supabase Auth (JWT + OAuth)
-- **API:** Auto-generated REST API + RPC Functions
+- **API:** Auto-generated REST API +  RPC Functions
 - **Real-time:** Supabase Realtime Subscriptions
 - **Edge Functions:** Deno Runtime (Serverless)
 - **File Storage:** Supabase Storage (untuk future image uploads)
