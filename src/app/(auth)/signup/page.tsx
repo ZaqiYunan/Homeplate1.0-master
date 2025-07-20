@@ -146,188 +146,120 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-100 p-4">
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="w-full max-w-2xl">
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mb-6 shadow-lg">
-              <HomeplateLogo className="h-10 w-10 text-white" />
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <div className="flex justify-center mb-4">
+            <HomeplateLogo className="h-12 w-12 text-green-600" />
+          </div>
+          <CardTitle className="text-2xl font-bold text-green-800">Create Your Account</CardTitle>
+          <CardDescription>
+            Join HomePlate to save ingredients and get recipe ideas.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleEmailSignup} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={isLoading || isGoogleLoading}
+              />
             </div>
-            <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
-              Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">HomePlate</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-md mx-auto">
-              Join thousands of home cooks discovering amazing recipes and managing their kitchen like a pro
-            </p>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Create a secure password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={6}
+                disabled={isLoading || isGoogleLoading}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm your password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                minLength={6}
+                disabled={isLoading || isGoogleLoading}
+              />
+            </div>
+            <Button
+              type="submit"
+              className="w-full bg-green-600 hover:bg-green-700"
+              disabled={isLoading || isGoogleLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Creating Account...
+                </>
+              ) : (
+                <>
+                  <UserPlus className="mr-2 h-4 w-4" />
+                  Sign Up with Email
+                </>
+              )}
+            </Button>
+          </form>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <Separator />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
           </div>
 
-          {/* Signup Card */}
-          <Card className="relative overflow-hidden bg-white/95 backdrop-blur-sm shadow-2xl border border-gray-200/50">
-            {/* Decorative background */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full -translate-y-16 translate-x-16 opacity-10"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-400 to-green-400 rounded-full translate-y-12 -translate-x-12 opacity-10"></div>
-            
-            <CardHeader className="text-center pb-8 pt-8">
-              <CardTitle className="text-3xl font-bold text-gray-800 mb-2">Create Your Account</CardTitle>
-              <CardDescription className="text-lg text-gray-600">
-                Start your culinary adventure today
-              </CardDescription>
-            </CardHeader>
-            
-            <CardContent className="px-8 pb-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Left Column - Benefits */}
-                <div className="space-y-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">What you'll get:</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-xs">✓</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">Personalized Recipes</p>
-                        <p className="text-sm text-gray-600">Get recipe recommendations based on your preferences</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-gradient-to-r from-teal-500 to-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-xs">✓</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">Smart Inventory</p>
-                        <p className="text-sm text-gray-600">Track ingredients and reduce food waste</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-white text-xs">✓</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800">Nutrition Insights</p>
-                        <p className="text-sm text-gray-600">Monitor your nutritional goals effortlessly</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Column - Form */}
-                <div className="space-y-6">
-                  <form onSubmit={handleEmailSignup} className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="your@email.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="h-12 text-base border-2 border-gray-200 focus:border-purple-500 rounded-lg"
-                        disabled={isLoading || isGoogleLoading}
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="password" className="text-sm font-semibold text-gray-700">Password</Label>
-                      <Input
-                        id="password"
-                        type="password"
-                        placeholder="Create a secure password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        minLength={6}
-                        className="h-12 text-base border-2 border-gray-200 focus:border-purple-500 rounded-lg"
-                        disabled={isLoading || isGoogleLoading}
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-700">Confirm Password</Label>
-                      <Input
-                        id="confirmPassword"
-                        type="password"
-                        placeholder="Confirm your password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                        minLength={6}
-                        className="h-12 text-base border-2 border-gray-200 focus:border-purple-500 rounded-lg"
-                        disabled={isLoading || isGoogleLoading}
-                      />
-                    </div>
-                    
-                    <Button 
-                      type="submit" 
-                      className="w-full h-14 text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-lg shadow-lg transform transition-all duration-200 hover:scale-[1.02]" 
-                      disabled={isLoading || isGoogleLoading}
-                    >
-                      {isLoading ? (
-                        <>
-                          <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                          Creating Your Account...
-                        </>
-                      ) : (
-                        <>
-                          <UserPlus className="mr-3 h-6 w-6" />
-                          Join HomePlate Now
-                        </>
-                      )}
-                    </Button>
-                  </form>
-
-                  <div className="relative">
-                    <div className="absolute inset-0 flex items-center">
-                      <Separator className="w-full" />
-                    </div>
-                    <div className="relative flex justify-center text-sm">
-                      <span className="bg-white px-4 text-gray-500 font-medium">Or continue with</span>
-                    </div>
-                  </div>
-
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-14 text-lg font-semibold border-2 border-gray-300 hover:border-gray-400 rounded-lg shadow-md hover:shadow-lg transition-all duration-200" 
-                    onClick={handleGoogleSignup}
-                    disabled={isLoading || isGoogleLoading}
-                  >
-                    {isGoogleLoading ? (
-                      <>
-                        <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                        Connecting...
-                      </>
-                    ) : (
-                      <>
-                        <Chrome className="mr-3 h-6 w-6 text-[#DB4437]" />
-                        Sign up with Google
-                      </>
-                    )}
-                  </Button>
-
-                  <div className="text-center pt-4">
-                    <p className="text-sm text-gray-600">
-                      Already have an account?{' '}
-                      <Link href="/login" className="font-semibold text-purple-600 hover:text-purple-800 underline transition-colors">
-                        Sign in instead
-                      </Link>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-            
-            <CardFooter className="text-center px-8 pb-8">
-              <p className="text-xs text-gray-500 max-w-md mx-auto">
-                By creating an account, you agree to our{' '}
-                <Link href="/terms" className="underline hover:text-gray-700">Terms of Service</Link>
-                {' '}and{' '}
-                <Link href="/privacy" className="underline hover:text-gray-700">Privacy Policy</Link>
-              </p>
-            </CardFooter>
-          </Card>
-        </div>
-      </div>
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={handleGoogleSignup}
+            disabled={isLoading || isGoogleLoading}
+          >
+            {isGoogleLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Signing up with Google...
+              </>
+            ) : (
+              <>
+                <Chrome className="mr-2 h-4 w-4 text-[#DB4437]" />
+                Sign up with Google
+              </>
+            )}
+          </Button>
+        </CardContent>
+        <CardFooter className="flex flex-col space-y-2">
+          <div className="text-center text-sm text-gray-600">
+            Already have an account?{' '}
+            <Link href="/login" className="text-green-600 hover:text-green-800 font-semibold">
+              Sign in
+            </Link>
+          </div>
+          <div className="text-center text-sm text-gray-600">
+            <Link href="/" className="text-green-600 hover:text-green-800">
+              ← Back to Home
+            </Link>
+          </div>
+        </CardFooter>
+      </Card>
     </div>
   );
 }

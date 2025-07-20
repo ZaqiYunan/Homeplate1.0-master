@@ -45,7 +45,7 @@ const personalizeFormSchema = z.object({
   height: z.coerce.number().min(50, "Height must be at least 50cm.").max(250, "Height seems too high."),
   weight: z.coerce.number().min(20, "Weight must be at least 20kg.").max(300, "Weight seems too high."),
   age: z.coerce.number().min(10, "Age must be at least 10.").max(120, "Age seems too high.").optional(),
-  gender: z.enum(['male', 'female', 'other']).optional(),
+  gender: z.enum(['male', 'female']).optional(),
 });
 
 
@@ -115,14 +115,7 @@ const MealItem = ({ meal }: { meal: MealLog }) => {
     return (
         <li className="flex items-center justify-between py-3">
             <div className="flex items-center gap-4">
-                <Image
-                    src={`https://placehold.co/64x64.png`}
-                    alt={meal.name}
-                    width={56}
-                    height={56}
-                    className="rounded-lg object-cover"
-                    data-ai-hint={meal.name.split(' ').slice(0, 2).join(' ')}
-                />
+                {/* Image removed as per user request */}
                 <div className="space-y-1">
                     <p className="font-semibold text-foreground flex items-center gap-1.5">{React.createElement(mealIcon(), {className:"h-4 w-4 text-muted-foreground"})} {meal.name}</p>
                     <p className="text-xs text-muted-foreground">
@@ -159,7 +152,7 @@ export default function NutritionPage() {
       height: userProfile?.height || 170,
       weight: userProfile?.weight || 70,
       age: userProfile?.age || undefined,
-      gender: userProfile?.gender || undefined,
+      gender: userProfile?.gender === 'male' || userProfile?.gender === 'female' ? userProfile.gender : undefined,
     },
   });
 
@@ -169,7 +162,7 @@ export default function NutritionPage() {
             height: userProfile.height || 170,
             weight: userProfile.weight || 70,
             age: userProfile.age || undefined,
-            gender: userProfile.gender || undefined,
+            gender: userProfile.gender === 'male' || userProfile.gender === 'female' ? userProfile.gender : undefined,
         });
     }
   }, [userProfile, form]);
@@ -359,16 +352,10 @@ export default function NutritionPage() {
                                         name="gender"
                                         render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Gender (optional)</FormLabel>
+                                            <FormLabel>Gender</FormLabel>
                                             <Select 
-                                                onValueChange={(value) => {
-                                                    if (value === "none") {
-                                                        field.onChange(undefined);
-                                                    } else {
-                                                        field.onChange(value as 'male' | 'female' | 'other');
-                                                    }
-                                                }} 
-                                                value={field.value || "none"}
+                                                onValueChange={field.onChange}
+                                                value={field.value || ""}
                                             >
                                                 <FormControl>
                                                     <SelectTrigger>
@@ -376,10 +363,8 @@ export default function NutritionPage() {
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
-                                                    <SelectItem value="none">Prefer not to say</SelectItem>
                                                     <SelectItem value="male">Male</SelectItem>
                                                     <SelectItem value="female">Female</SelectItem>
-                                                    <SelectItem value="other">Other</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                             <FormDescription className="text-xs">
